@@ -20,12 +20,12 @@ jobs:
     - run: echo "GITHUB_EVENT_NAME- $GITHUB_EVENT_NAME"
     - run: echo "GITHUB_WORKSPACE- $GITHUB_WORKSPACE"
     - run: echo "GITHUB_REF- $GITHUB_REF"
+    - run: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
     
 #     - name: Build the Docker image
 #       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
     - name: Publish Docker
-      pre: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
         name: alekzander7c4/lesson3
