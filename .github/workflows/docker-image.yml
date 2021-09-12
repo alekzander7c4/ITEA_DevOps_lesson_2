@@ -12,24 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: echo "GITHUB_WORKFLOW- $GITHUB_WORKFLOW"
-    - run: echo "GITHUB_RUN_ID- $GITHUB_RUN_ID"
-    - run: echo "GITHUB_RUN_NUMBER- $GITHUB_RUN_NUMBER"
-    - run: echo "GITHUB_JOB- $GITHUB_JOB"
-    - run: echo "GITHUB_REPOSITORY- $GITHUB_REPOSITORY"
-    - run: echo "GITHUB_EVENT_NAME- $GITHUB_EVENT_NAME"
-    - run: echo "GITHUB_WORKSPACE- $GITHUB_WORKSPACE"
-    - run: echo "GITHUB_REF- $GITHUB_REF"
-#     - run: echo ::save-state name=RELEASE_VERSION::$(echo $GITHUB_RUN_NUMBER)
-#     - run: echo "${{ env.STATE_RELEASE_VERSION }}"
-#     - run: echo "${{ env.RELEASE_VERSION }}"
-    - run: echo "STATE_RELEASE_VERSION=$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
-    - run: echo "${{ env.STATE_RELEASE_VERSION }}"
-    - run: echo "GITHUB_ENV - $GITHUB_ENV"
+    - run: echo "STATE_RELEASE_VERSION=0.$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
     
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
     - name: Publish Docker
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
