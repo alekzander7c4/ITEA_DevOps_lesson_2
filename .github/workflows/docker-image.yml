@@ -21,3 +21,14 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tags: "latest,${{ env.DOCKER_TAG }}"
+
+
+    - name: Run ansible playbook
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        # Required, playbook filepath
+        playbook: ansible.yaml
+        # Optional, directory where playbooks live
+        # directory: ./
+        # Optional, SSH private key
+        key: ${{secrets.SSH_PRIVATE_KEY}}
