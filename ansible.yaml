@@ -57,6 +57,7 @@
     - name: Create and start services
       community.docker.docker_compose:
         project_src: /home/ubuntu/
+        pull: yes
       register: output
 
     - ansible.builtin.debug:
